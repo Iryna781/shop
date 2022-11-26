@@ -18,14 +18,13 @@ let addToCartBtns = document.querySelectorAll(".btn-add");
 //         });
 // }
 
+
+
 for (let i = 0; i< addToCartBtns.length; i++){
     addToCartBtns[i].addEventListener("click", function () {
     productsCountEl.textContent = +productsCountEl.textContent + 1;
     });
 }
-
-
-
 
 
 // for (let i = 0; i < addToCartBtns.length; i++) {
@@ -38,34 +37,41 @@ for (let i = 0; i< addToCartBtns.length; i++){
 
 
 
-// //modal
-// let moreDetailsBtns = document.querySelectorAll(".btn-details");
-// let modal = document.querySelector(".modal");
-// let btnClose = document.querySelector(".btn-close");
-// console.log(btnClose);
-// // console.log(moreDetailsBtns);
-// // console.log(modal);
+//modal
+let moreDetailsBtns = document.querySelectorAll(".btn-submit");
+let modal = document.querySelector(".modal");
+let btnClose = document.querySelector(".btn-close");
+console.log(btnClose);
 
-// moreDetailsBtns.forEach((item) => {
-//   item.addEventListener("click", function () {
-//     modal.classList.add("show");
-//     modal.classList.remove("hide");
-//   });
-// });
+// console.log(moreDetailsBtns);
+// console.log(modal);
 
-// btnClose.addEventListener("click", function () {
-//   modal.classList.add("hide");
-//   modal.classList.remove("show");
-// });
+moreDetailsBtns.forEach((item) => {
+  item.addEventListener("click", function () {
+    modal.classList.add("show");
+    modal.classList.remove("hide");
+  });
+});
 
-// function openModal() {
-//   modal.classList.add("show");
-//   modal.classList.remove("hide");
-// }
-// function closeModal() {
-//   modal.classList.add("hide");
-//   modal.classList.remove("show");
-// }
+btnClose.addEventListener("click", function () {
+  modal.classList.add("hide");
+  modal.classList.remove("show");
+});
+
+moreDetailsBtns.forEach((item) => {
+    item.addEventListener("click", openModal);
+});
+
+btnClose.addEventListener("click", closeModal); 
+
+function openModal() {
+  modal.classList.add("show");
+  modal.classList.remove("hide");
+}
+function closeModal() {
+  modal.classList.add("hide");
+  modal.classList.remove("show");
+}
 
 // modal.addEventListener("click", function (e) {
 //   if (e.target === modal) {
