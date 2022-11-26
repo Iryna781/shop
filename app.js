@@ -1,17 +1,42 @@
-// let productsCountEl = document.getElementById("products-count");
+let productsCountEl = document.getElementById("products-count");
 // console.log(productsCountEl);
 
 //add to cart
-// let addCartBtns = document.querySelectorAll(".btn-add");
-// console.log(addCartBtns);
+let addToCartBtns = document.querySelectorAll(".btn-add");
+// console.log(addToCartBtns);
 
-// for (let i = 0; i < addCartBtns.length; i++) {
-//   addCartBtns[i].addEventListener("click", function () {
-//     // let prevProductsCount = +productsCountEl.textContent;
-//     // productsCountEl.textContent = prevProductsCount + 1;
-//     productsCountEl.textContent = +productsCountEl.textContent + 1;
-//   });
+// for (let i = 0; i < addToCartBtns.length; i++) {
+//     addToCartBtns[i].addEventListener("click", function () {
+//         console.log("Clicked");
+//     });
+// } 
+
+// for (let i = 0; i < addToCartBtns.length; i++) {
+//         addToCartBtns[i].addEventListener("click", function () {
+//         let prevProductsCount = +productsCountEl.textContent;
+//         productsCountEl.textContent = prevProductsCount + 1;
+//         });
 // }
+
+for (let i = 0; i< addToCartBtns.length; i++){
+    addToCartBtns[i].addEventListener("click", function () {
+    productsCountEl.textContent = +productsCountEl.textContent + 1;
+    });
+}
+
+
+
+
+
+// for (let i = 0; i < addToCartBtns.length; i++) {
+//     addToCartBtns.forEach((item) => {
+//     item.addEventListener("click", function(){
+//         console.log("clicked foreach");
+//     });
+// });
+
+
+
 
 // //modal
 // let moreDetailsBtns = document.querySelectorAll(".btn-details");
