@@ -73,8 +73,39 @@ function closeModal() {
   modal.classList.remove("show");
 }
 
-// modal.addEventListener("click", function (e) {
-//   if (e.target === modal) {
-//     closeModal();
-//   }
-// });
+modal.addEventListener("click", function (e) {
+//   console.log(e);
+//   console.log(e.target);
+    if (e.target === modal) {
+    closeModal();
+  }
+});
+
+//toggle like state
+let likeBtns = document.querySelectorAll(".like");
+likeBtns.forEach((item) => {
+  item.addEventListener("click", function () {
+    // if (item.classList.contains("liked")) {
+    //   item.classList.remove("liked");
+    // } else {
+    //   item.classList.add("liked");
+    // }
+    item.classList.toggle("liked");
+  });
+});
+
+function showModalByScroll() {
+  if (window.pageYOffset > document.body.scrollHeight / 2) {
+    openModal();
+    window.removeEventListener("scroll", showModalByScroll);
+  }
+}
+
+window.addEventListener("scroll", showModalByScroll);
+
+//add slider
+
+$(".slider-block").slick({
+  dots: true,
+});
+
