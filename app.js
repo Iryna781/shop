@@ -20,7 +20,7 @@ let addToCartBtns = document.querySelectorAll(".btn-add");
 
 
 
-for (let i = 0; i< addToCartBtns.length; i++){
+for (let i = 0; i < addToCartBtns.length; i++){
     addToCartBtns[i].addEventListener("click", function () {
     productsCountEl.textContent = +productsCountEl.textContent + 1;
     });
@@ -41,22 +41,22 @@ for (let i = 0; i< addToCartBtns.length; i++){
 let moreDetailsBtns = document.querySelectorAll(".btn-submit");
 let modal = document.querySelector(".modal");
 let btnClose = document.querySelector(".btn-close");
-console.log(btnClose);
+// console.log(btnClose);
 
 // console.log(moreDetailsBtns);
 // console.log(modal);
 
-moreDetailsBtns.forEach((item) => {
-  item.addEventListener("click", function () {
-    modal.classList.add("show");
-    modal.classList.remove("hide");
-  });
-});
+// moreDetailsBtns.forEach((item) => {
+//   item.addEventListener("click", function () {
+//     modal.classList.add("show");
+//     modal.classList.remove("hide");
+//   });
+// });
 
-btnClose.addEventListener("click", function () {
-  modal.classList.add("hide");
-  modal.classList.remove("show");
-});
+// btnClose.addEventListener("click", function () {
+//   modal.classList.add("hide");
+//   modal.classList.remove("show");
+// });
 
 moreDetailsBtns.forEach((item) => {
     item.addEventListener("click", openModal);
@@ -105,7 +105,7 @@ function showModalByScroll() {
   }
 }
 
-window.addEventListener("scroll", showModalByScroll);
+// window.addEventListener("scroll", showModalByScroll);
 // setTimeout(openModal, 5000);
 
 //add slider
@@ -114,30 +114,32 @@ window.addEventListener("scroll", showModalByScroll);
 $(".slider-block").slick({
   dots: true,
 });
+//AOS
+// AOS.init();
 
 let decrementBtns = document.querySelectorAll(".decrement");
 let incrementBtns = document.querySelectorAll(".increment");
 let inputFields = document.querySelectorAll(".product-quantity input");
 
-console.log(decrementBtns);
-console.log(incrementBtns);
-console.log(inputFields);
+// console.log(decrementBtns);
+// console.log(incrementBtns);
+// console.log(inputFields);
 
-incrementBtns.forEach((item, i) => {
-  item.addEventListener("click", function(){
-   let currentCount = +inputFields[i].value;
-   inputFields[i].value = currentCount + 1;
+// incrementBtns.forEach((item, i) => {
+//   item.addEventListener("click", function(){
+//    let currentCount = +inputFields[i].value;
+//    inputFields[i].value = currentCount + 1;
 
-  });
-});
+//   });
+// });
 
-decrementBtns.forEach((item, i) => {
-  item.addEventListener("click", function(){
-   let currentCount = +inputFields[i].value;
-   inputFields[i].value = currentCount - 1;
+// decrementBtns.forEach((item, i) => {
+//   item.addEventListener("click", function(){
+//    let currentCount = +inputFields[i].value;
+//    inputFields[i].value = currentCount - 1;
 
-  });
-});
+//   });
+// });
 
 // let audi = {
 //   model:"A4",
@@ -174,14 +176,14 @@ decrementBtns.forEach((item, i) => {
 // console.log(lexus);
 // console.log(audi.showName());
 
-function Counter(incrementBtn, decrementBtn, inputField, minCount = 1, maxCount = 10){
+function Counter(incrementBtn, decrementBtn, inputField, minCount = 1, maxCount = 10) {
    this.domRefs={
     incrementBtn,
     decrementBtn,
     inputField,
    };
   //  console.log(this);
-   this.toggleButtonState = function(){
+    this.toggleButtonState = function(){
     let count = this.domRefs.inputField.value;
     this.domRefs.decrementBtn.disabled = count <= minCount;
     this.domRefs.incrementBtn.disabled = count >= maxCount;
@@ -189,7 +191,70 @@ function Counter(incrementBtn, decrementBtn, inputField, minCount = 1, maxCount 
    };
    this.toggleButtonState();
 
-   console.log(this);
-}
+  //  console.log(this);
 
+   this.increment = function(){
+    this.domRefs.inputField.value = +this.domRefs.inputField.value + 1;
+    this.toggleButtonState();
+    // console.log(this);
+   };
+
+    this.decrement = function(){
+    this.domRefs.inputField.value = +this.domRefs.inputField.value - 1;
+    this.toggleButtonState();
+   };
+    this.domRefs.decrementBtn.addEventListener("click", this.decrement.bind(this));
+    this.domRefs.incrementBtn.addEventListener("click", this.increment.bind(this));
+    console.log(this);
+}
 let counter1 = new Counter(incrementBtns[0], decrementBtns[0],inputFields[0]);
+
+//1 - якщо функція викликана як звичайна функція, то this вказує на шлобальний об'єкт window, а якщо строгий режим, то на undefind
+// function test() {
+//   "use strict";
+//   console.log(this);
+// }
+// test();
+
+//2 - якщо функція викликана як метод об'єкту, то this вказує на той об'єкт, на якому вона викликається
+// const user = {
+//   name: "Jack",
+//   hi: function (){
+//     console.log(this);
+//     console.log(this.name);
+//   },
+// };
+// user.hi()
+
+//3 - якщо функція викликана як функція конструктор, то this вказує на новостворений екземпляр
+//4 - треба прив'язувати контекст (3 способа є: call, apply - зразу викликають функцію, bind) до функції, в нашому випадку нижче 2 об'єкти прив'язуємо до функції
+// function hi(surname) {
+//   console.log(this);
+//   console.log(this.name + surname);
+// }
+// hi();
+// const jack = {
+//   name: "Jack",
+// };
+// const pablo = {
+//   name: "Pablo",
+// };
+
+// call, apply, bind
+// hi.call(jack, "Call");
+// hi.call(pablo, "Call");
+
+// hi.apply(jack, ["Apply"]);
+// hi.apply(pablo, ["Apply"]);
+
+// let test = hi.bind(jack, "Bind");
+// test();
+
+const counters = [];
+
+inputFields.forEach(
+  (countItem, i) => 
+  (counters[i] = new Counter(incrementBtns[i], decrementBtns[i], countItem))
+);
+
+  
