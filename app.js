@@ -38,7 +38,7 @@ for (let i = 0; i < addToCartBtns.length; i++){
 
 
 //modal
-let moreDetailsBtns = document.querySelectorAll(".btn-submit");
+let moreDetailsBtns = document.querySelectorAll(".btn-sub");
 let modal = document.querySelector(".modal");
 let btnClose = document.querySelector(".btn-close");
 // console.log(btnClose);
