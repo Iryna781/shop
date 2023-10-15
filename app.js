@@ -81,7 +81,6 @@ function Counter(incrementBtn, decrementBtn, inputField, minCount = 1, maxCount 
     this.domRefs.incrementBtn.addEventListener("click", this.increment.bind(this));
     console.log(this);
 }
-// let counter1 = new Counter(incrementBtns[0], decrementBtns[0],inputFields[0]);
 
 const counters = [];
 
