@@ -58,9 +58,6 @@
   
     line-height: 50px;
     text-align: center;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
   }
   .d-flex {
     display: flex;
