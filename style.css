@@ -403,6 +403,7 @@
     background-repeat: no-repeat;
     background-position: 95%;
     font-size: 21px;
+      cursor: pointer;
   }
   
   .modal {
